@@ -3,13 +3,13 @@
         <header id="careerfy-header" class="careerfy-header-one">
             <div class="container">
                 <div class="row">
-                    <aside class="col-md-4" style="margin-right:0px;">
+                    <!-- <aside class="col-md-4" style="margin-right:0px;">
                         <select>
                             <option>EN</option>
                             <option>BN</option>
                         </select>
-                    </aside>
-                    <!-- <aside class="col-md-12"><label class="text-right lang-label">EN</label></aside> -->
+                    </aside> -->
+                    <aside class="col-md-12"><label class="text-right lang-label">EN</label></aside>
                 </div>
                 <div class="row">
                     <aside class="col-md-2"> <router-link to="/"><a href="#" class="careerfy-logo"><img src="images/logo.png" alt=""></a></router-link> </aside>
