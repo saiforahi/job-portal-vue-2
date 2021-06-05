@@ -90,7 +90,7 @@ export default {
     methods:{
         closeModal : function(){
             document.getElementById('JobSearchModalSignup').classList.remove('fade-in')
-            
+            document.body.classList.remove('careerfy-modal-active')
         },
         hideLoginAndShowRegistration:function(){
             document.getElementById('JobSearchModalSignup').classList.remove('fade-in')
