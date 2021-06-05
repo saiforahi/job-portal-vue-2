@@ -28,10 +28,10 @@
                             <li class="careerfy-banner-submit"> <input type="button" value=""> <i class="careerfy-icon careerfy-search"></i> </li>
                         </ul>
                     </form>
-                    <div class="careerfy-banner-btn">
+                    <!-- <div class="careerfy-banner-btn">
                         <a href="#" class="careerfy-bgcolorhover"><i class="careerfy-icon careerfy-up-arrow"></i> Upload Your Resume</a>
                         <a href="#" class="careerfy-bgcolorhover"><i class="careerfy-icon careerfy-portfolio"></i> Hiring? Post a job for free</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
