@@ -2,7 +2,7 @@
   <div id="app">
     <div class="careerfy-wrapper">
       <Header/>
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
       <Footer/>
     </div>
     <Register/>
