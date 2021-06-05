@@ -107,7 +107,7 @@
                             <ul class="careerfy-user-section">
                                 <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signin-tab" v-on:click="showRegistrationForm" href="#">Register</a></li>
                                 <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signup-tab" href="#" v-on:click="showLoginForm">Sign in</a></li>
-                                <li v-if="isLoggedIn"><img :src="avatar_img" alt="Avatar" class="avatar"></li>
+                                <li v-if="isLoggedIn"><router-link to="/profile"><img :src="avatar_img" alt="Avatar" class="avatar"></router-link></li>
                             </ul>
                             <a href="#" class="careerfy-simple-btn careerfy-bgcolor"><span> <i class="careerfy-icon careerfy-arrows-2"></i> Post Job</span></a>
                         </div>
