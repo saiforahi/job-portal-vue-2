@@ -48,7 +48,7 @@
                 <!-- Footer Widget -->
                 <!-- CopyRight -->
                 <div class="careerfy-copyright">
-                    <p>Copyrights © 2018 All Rights Reserved by <a href="#" class="careerfy-color">EyeCix</a></p>
+                    <p>Copyrights © 2021 All Rights Reserved by <a href="#" class="careerfy-color">Karmashangsthan</a></p>
                     <ul class="careerfy-social-network">
                         <li><a href="#" class="careerfy-bgcolorhover fa fa-facebook"></a></li>
                         <li><a href="#" class="careerfy-bgcolorhover fa fa-twitter"></a></li>
