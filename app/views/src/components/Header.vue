@@ -9,7 +9,7 @@
                             <option>BN</option>
                         </select>
                     </aside> -->
-                    <aside class="col-md-12"><label class="text-right lang-label">EN</label></aside>
+                    <aside class="col-md-12"><label style="cursor:pointer;" v-on:click="change_lang" class="text-right lang-label">{{currentLang}}</label></aside>
                 </div>
                 <div class="row">
                     <aside class="col-md-2"> <router-link to="/"><a href="#" class="careerfy-logo"><img src="images/logo.png" alt=""></a></router-link> </aside>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="collapse navbar-collapse" id="careerfy-navbar-collapse-1">
                                 <ul class="navbar-nav">
-                                    <li class="active"><a href="#">Home</a>
+                                    <li class="active"><a href="#">{{$t('message.home')}}</a>
                                         <ul class="sub-menu">
                                             <li><a href="#">Demo Careerfy</a></li>
                                             <li><a href="#">Demo Hireright</a></li>
@@ -105,8 +105,8 @@
                     <aside class="col-md-4">
                         <div class="careerfy-right">
                             <ul class="careerfy-user-section">
-                                <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signin-tab" v-on:click="showRegistrationForm" href="#">Register</a></li>
-                                <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signup-tab" href="#" v-on:click="showLoginForm">Sign in</a></li>
+                                <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signin-tab" v-on:click="showRegistrationForm" href="#">{{ $t('message.registration') }}</a></li>
+                                <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signup-tab" href="#" v-on:click="showLoginForm">{{ $t('message.signin') }}</a></li>
                                 <li v-if="isLoggedIn"><router-link to="/profile"><img :src="avatar_img" alt="Avatar" class="avatar"></router-link></li>
                             </ul>
                             <a href="#" class="careerfy-simple-btn careerfy-bgcolor"><span> <i class="careerfy-icon careerfy-arrows-2"></i> Post Job</span></a>
@@ -127,7 +127,8 @@ export default {
         }
     },
     computed : {
-      isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+      isLoggedIn : function(){ return this.$store.getters.isLoggedIn},
+      currentLang : function(){ return this.$i18n.locale}
     },
     methods:{
         showLoginForm:function(){
@@ -139,6 +140,14 @@ export default {
             console.log('login btn pressed')
             document.getElementById('JobSearchModalLogin').classList.add('fade-in')
             document.body.classList.add('careerfy-modal-active')
+        },
+        change_lang : function(){
+            if(this.$i18n.locale == 'en'){
+                this.$i18n.locale = 'bn'
+            }
+            else{
+                this.$i18n.locale = 'en'
+            }
         }
     }
 }
