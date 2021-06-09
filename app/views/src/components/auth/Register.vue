@@ -90,6 +90,7 @@
     
 </template>
 <script>
+import swal from 'sweetalert';
 export default {
     name:"Register",
     data(){
@@ -110,7 +111,11 @@ export default {
             let phone = this.phone
             let firstName = this.firstName
             let lastName = this.lastName
-            this.$store.dispatch('register', { firstName,lastName,email, phone }).then(() => {this.closeModal();this.$router.push('/')}).catch(err => console.log(err))
+            this.$store.dispatch('register', { firstName,lastName,email, phone }).then(() => {
+                this.closeModal()
+                swal('Success','You successfully registered and logged in!','success')
+                this.$router.push('/')
+            }).catch(err => console.log(err))
         }
     },
 }

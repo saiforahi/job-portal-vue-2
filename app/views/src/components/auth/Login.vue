@@ -74,6 +74,7 @@
     </div>
 </template>
 <script>
+import swal from 'sweetalert';
 export default {
     name:"Login",
     data(){
@@ -103,6 +104,7 @@ export default {
             this.$store.dispatch('login', { email, password }).then(() => {
                 console.log('closing modal')
                 this.closeModal()
+                swal('Success','You successfully logged in!','success')
             }).catch(err => console.log(err))
         }
     },
