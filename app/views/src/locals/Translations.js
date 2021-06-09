@@ -7,14 +7,16 @@ const messages = {
       message: {
         home:'Home',
         signin: 'Sign in',
-        registration : "Sign up"
+        registration : "Sign up",
+        post_job:"Post Job"
       }
     },
     bn: {
       message: {
         home:'হোম',
         signin: 'লগইন',
-        registration : "রেজিস্ট্রেশান"
+        registration : "রেজিস্ট্রেশান",
+        post_job:"জব পোস্ট করুন"
       }
     }
 }
