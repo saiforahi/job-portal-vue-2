@@ -7,7 +7,7 @@
                     <div class="row">
                         <aside class="widget col-md-4 widget_contact_info">
                             <div class="widget_contact_wrap">
-                                <router-link to="/"><img src="images/footer-logo.png" alt=""></router-link>
+                                <router-link to="/"><img src="images/karma-logo.png" alt=""></router-link>
                                 <p>Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat odio eget diam cursus semper. Sed coquat sapien faucibus quam.</p>
                                 <a href="#" class="careerfy-classic-btn careerfy-bgcolor">Learn more</a>
                             </div>
