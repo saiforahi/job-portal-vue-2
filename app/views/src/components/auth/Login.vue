@@ -36,12 +36,12 @@
                         <ul>
                             <li>
                                 <label>Email Address:</label>
-                                <input v-model="username" type="text" value="Enter Your Email Address" onblur="if(this.value == '') { this.value ='Enter Your Email Address'; }" onfocus="if(this.value =='Enter Your Email Address') { this.value = ''; }">
+                                <input v-model="username" type="text" value="Enter Your Email Address" >
                                 <i class="careerfy-icon careerfy-mail"></i>
                             </li>
                             <li>
                                 <label>Password:</label>
-                                <input v-model="password" type="password" value="Enter Password" onblur="if(this.value == '') { this.value ='Enter Password'; }" onfocus="if(this.value =='Enter Password') { this.value = ''; }">
+                                <input style="width:100%;" v-model="password" type="password" value="Enter Password" >
                                 <i class="careerfy-icon careerfy-multimedia"></i>
                             </li>
                             <li>
