@@ -225,20 +225,20 @@
                                 <ul class="careerfy-row">
                                     <li class="careerfy-column-4">
                                         <div class="careerfy-job-grid-wrap">
-                                            <figure>
+                                            <figure v-on:click="go_to_details">
                                                 <span class="careerfy-jobtype-label">Freelance</span>
-                                                <a href="#"><img src="extra-images/job-grid-logo-1.png" alt=""></a>
+                                                <a href="javascript:void(0)"><img src="extra-images/job-grid-logo-1.png" alt=""></a>
                                                 <span class="careerfy-featured-label">Featured</span>
                                             </figure>
                                             <div class="careerfy-jobgrid-text">
                                                 <div class="careerfy-job-tag"><a href="#">@ Massimo Artemisis</a></div>
-                                                <h2><a href="#">PHP Web Software Developer (HTML, CSS)</a></h2>
+                                                <h2><a href="javascript:void(0)">PHP Web Software Developer (HTML, CSS)</a></h2>
                                                 <ul class="careerfy-job-time">
                                                     <li><a href="#">Sales & Marketing</a></li>
                                                     <li>3 days ago</li>
                                                 </ul>
                                                 <span class="careerfy-job-location"><i class="careerfy-icon careerfy-maps-and-flags"></i> Netherlands, Rotterdam</span>
-                                                <a href="#" class="careerfy-job-like"><i class="fa fa-heart"></i></a>
+                                                <a href="javascript:void(0)" class="careerfy-job-like"><i class="fa fa-heart"></i></a>
                                             </div>
                                         </div>
                                     </li>
@@ -299,6 +299,11 @@ export default {
         return{
             gridView: true,
             jobs:[]
+        }
+    },
+    methods:{
+        go_to_details:function(){
+            this.$router.push({name:'jobdetails',params:{id:'1'}})
         }
     }
 }
