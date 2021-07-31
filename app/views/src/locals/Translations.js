@@ -8,7 +8,8 @@ const messages = {
         home:'Home',
         signin: 'Sign in',
         registration : "Sign up",
-        post_job:"Post Job"
+        post_job:"Post Job",
+        jobs:"Jobs"
       }
     },
     bn: {
@@ -16,7 +17,8 @@ const messages = {
         home:'হোম',
         signin: 'লগইন',
         registration : "রেজিস্ট্রেশান",
-        post_job:"জব পোস্ট করুন"
+        post_job:"জব পোস্ট করুন",
+        jobs:""
       }
     }
 }

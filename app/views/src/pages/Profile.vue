@@ -1,26 +1,7 @@
 <template>
     <div>
         <!-- SubHeader -->
-        <div class="careerfy-subheader careerfy-subheader-without-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="careerfy-page-title">
-                            <h1>Companies</h1>
-                            <p>Thousands of prestigious employers for you, search for a recruiter right now.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="careerfy-breadcrumb">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li>Candidates</li>
-                </ul>
-            </div>
-        </div>
+        <sub-header></sub-header>
         <!-- SubHeader -->
         <!-- Main Content -->
         <div class="careerfy-main-content">
@@ -29,7 +10,6 @@
             <div class="careerfy-main-section careerfy-dashboard-fulltwo">
                 <div class="container">
                     <div class="row">
-
                         <aside class="careerfy-column-3">
                             <div class="careerfy-typo-wrap">
                                 <div class="careerfy-employer-dashboard-nav">
@@ -45,19 +25,20 @@
                                         </figcaption>
                                     </figure>
                                     <ul>
-                                        <li class="active"><a href="candidate-dashboard-profile-seting.html"><i class="careerfy-icon careerfy-user"></i> My Profile</a></li>
-                                        <li><a href="candidate-dashboard-resume.html"><i class="careerfy-icon careerfy-resume"></i> My Resume</a></li>
-                                        <li><a href="candidate-dashboard-saved-jobs.html"><i class="careerfy-icon careerfy-heart"></i> Saved jobs</a></li>
-                                        <li><a href="candidate-dashboard-applied-jobs.html"><i class="careerfy-icon careerfy-briefcase-1"></i> Applied jobs</a></li>
-                                        <li><a href="candidate-dashboard-job-alert.html"><i class="careerfy-icon careerfy-alarm"></i> Job Alerts</a></li>
-                                        <li><a href="candidate-dashboard-cv-manager.html"><i class="careerfy-icon careerfy-id-card"></i> CV Manager</a></li>
-                                        <li><a href="candidate-dashboard-changed-password.html"><i class="careerfy-icon careerfy-multimedia"></i> Change Password</a></li>
-                                        <li><a href="#" v-on:click="logout"><i class="careerfy-icon careerfy-logout"></i> Logout</a></li>
+                                        <li><router-link to="/profile"><i class="careerfy-icon careerfy-user"></i> My Profile</router-link></li>
+                                        <li><router-link to="/profile/resume"><i class="careerfy-icon careerfy-resume"></i> My Resume</router-link></li>
+                                        <li><router-link to="/profile/saved-jobs"><i class="careerfy-icon careerfy-heart"></i> Saved jobs</router-link></li>
+                                        <li><router-link to="/profile/applied-jobs"><i class="careerfy-icon careerfy-briefcase-1"></i> Applied jobs</router-link></li>
+                                        <li><router-link to="/profile/job-alerts"><i class="careerfy-icon careerfy-alarm"></i> Job Alerts</router-link></li>
+                                        <!-- <li><router-link to="/profile/change-password"><i class="careerfy-icon crouter-linkreerfy-id-card"></i> CV Manager</router-link></li> -->
+                                        <li><router-link to="/profile/change-password"><i class="careerfy-icon careerfy-multimedia"></i> Change Password</router-link></li>
+                                        <li><a href="javascript:void(0)" v-on:click="logout"><i class="careerfy-icon careerfy-logout"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </aside>
-                        <div class="careerfy-column-9">
+                        <router-view></router-view>
+                        <!-- <div class="careerfy-column-9">
                             <div class="careerfy-typo-wrap">
                                 <form class="careerfy-employer-dasboard">
                                     <div class="careerfy-employer-box-section">
@@ -234,7 +215,7 @@
                                     <input type="submit" class="careerfy-employer-profile-submit" value="Save Setting">
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -246,8 +227,11 @@
     </div>
 </template>
 <script>
+import SubHeader from '../components/profile-components/SubHeader.vue'
 export default {
+  components: { SubHeader },
     name:"Profile",
+    components:[SubHeader],
     data(){
         return{
             

@@ -5,9 +5,15 @@
             <div class="careerfy-main-section map-full">
                 <div class="container-fluid">
                     <div class="row">
-
                         <div id="map"></div>
-
+                        <l-map></l-map>
+                    </div>
+                </div>
+            </div>
+            <div class="careerfy-main-section map-full">
+                <div class="container-fluid">
+                    <div class="row">
+                        <l-map></l-map>
                     </div>
                 </div>
             </div>
@@ -131,12 +137,20 @@
         <!-- Main Content -->
 </template>
 <script>
+import L from 'leaflet';
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+
 export default {
     name:"Contact",
     data(){
         return{
 
         }
-    }
+    },
+    components: {
+        LMap,
+        LTileLayer,
+        LMarker,
+    },
 }
 </script>

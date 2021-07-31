@@ -24,18 +24,9 @@
                             </div>
                             <div class="collapse navbar-collapse" id="careerfy-navbar-collapse-1">
                                 <ul class="navbar-nav">
-                                    <li class="active"><a href="#">{{$t('message.home')}}</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="#">Demo Careerfy</a></li>
-                                            <li><a href="#">Demo Hireright</a></li>
-                                            <li><a href="#">Demo Jobshub</a></li>
-                                            <li><a href="#">Demo BelovedJobs</a></li>
-                                            <li><a href="#">Demo JobsOnline</a></li>
-                                            <li><a href="#">Demo JobSearch</a></li>
-                                            <li><a href="#">Demo JobFinder</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages</a>
+                                    <li :class="currentRouteName == 'home'?'active':''"><router-link to="/">{{$t('message.home')}}</router-link></li>
+                                    <li :class="currentRouteName == 'jobs'?'active':''"><router-link to="/jobs">Jobs</router-link></li>
+                                    <!-- <li><a href="#">Pages</a>
                                         <ul class="sub-menu">
                                             <li><a href="#">About Us</a></li>
                                             <li><a href="#">CV Packages</a></li>
@@ -53,7 +44,7 @@
                                             </li>
                                             <li><a href="#">Job Packages</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li><a href="#">For Candidates</a>
                                         <ul class="sub-menu">
                                             <li><a href="#">Applied Jobs</a></li>
@@ -97,7 +88,7 @@
                                             <li><a href="#">Employer Confitmation</a></li>
                                         </ul>
                                     </li>
-                                    <li><router-link to="/contact-us"><a href="#">Contact</a></router-link></li>
+                                    <li :class="currentRouteName == 'contactUs'?'active':''"><router-link to="/contact-us"><a href="#">Contact</a></router-link></li>
                                 </ul>
                             </div>
                       </nav>
@@ -127,8 +118,11 @@ export default {
         }
     },
     computed : {
-      isLoggedIn : function(){ return this.$store.getters.isLoggedIn},
-      currentLang : function(){ return this.$i18n.locale}
+        isLoggedIn : function(){ return this.$store.getters.isLoggedIn},
+        currentLang : function(){ return this.$i18n.locale},
+        currentRouteName() {
+            return this.$route.name;
+        }
     },
     methods:{
         showLoginForm:function(){
