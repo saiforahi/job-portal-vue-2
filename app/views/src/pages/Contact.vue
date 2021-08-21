@@ -1,6 +1,5 @@
 <template>
     <div class="careerfy-main-content">
-            
             <!-- Main Section -->
             <div class="careerfy-main-section map-full">
                 <div class="container-fluid">
@@ -138,7 +137,7 @@
 </template>
 <script>
 import L from 'leaflet';
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+// import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
     name:"Contact",
@@ -147,10 +146,10 @@ export default {
 
         }
     },
-    components: {
-        LMap,
-        LTileLayer,
-        LMarker,
-    },
+    // components: {
+    //     LMap,
+    //     LTileLayer,
+    //     LMarker,
+    // },
 }
 </script>

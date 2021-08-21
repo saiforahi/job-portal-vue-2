@@ -18,11 +18,6 @@ let router = new Router({
     mode: 'hash',
     routes: [
       {
-        path: '/',
-        name: 'home',
-        component: Home
-      },
-      {
         path: '/profile',
         name: 'profile',
         component: Profile,
@@ -80,6 +75,11 @@ let router = new Router({
         //   header: true,
         //   content: true
         // },
+      },
+      {
+        path: '/',
+        name: 'home',
+        component: Home
       },
     ]
   })
