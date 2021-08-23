@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const status = 'dev'
-export const API_URL = status === 'prod' ? 'http://103.123.8.52:8333/' : 'http://localhost:8000/api/'
+export const API_URL = status === 'prod' ? 'https://karmashansthan.maroonlabbd.com/api/' : 'http://localhost:8000/api/'
 export const TOKEN = "token"
-export const BASE_URL = status ==='prod'? 'http://103.123.8.52:8075':'http://localhost:8000'
+export const BASE_URL = status ==='prod'? 'https://karmashansthan.maroonlabbd.com/':'http://localhost:8000'
 
 export const API = axios.create({
   baseURL: API_URL,
