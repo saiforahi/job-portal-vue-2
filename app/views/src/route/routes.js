@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/Home.vue'
+import Login from '../pages/Login.vue'
 import Resume from '../components/profile-components/Resume.vue'
 import ProfileData from '../components/profile-components/Profile.vue'
 import Contact from '../pages/Contact.vue'
@@ -77,9 +78,22 @@ let router = new Router({
         // },
       },
       {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        // props: {
+        //   header: true,
+        //   content: true
+        // },
+      },
+      {
         path: '/',
         name: 'home',
-        component: Home
+        component: Home,
+        // props: {
+        //   header: true,
+        //   content: true
+        // },
       },
     ]
   })

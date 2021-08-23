@@ -231,7 +231,6 @@ import SubHeader from '../components/profile-components/SubHeader.vue'
 export default {
   components: { SubHeader },
     name:"Profile",
-    components:[SubHeader],
     data(){
         return{
             
@@ -239,7 +238,11 @@ export default {
     },
     methods:{
         logout:function(){
-            this.$store.dispatch('logout').then(()=>{this.$router.push('/')}).catch(err => console.log(err))
+            this.$store.dispatch('logout').then((res)=>{
+                if(res.success==true){
+                    this.$router.push('/')
+                }
+            }).catch(err => console.log(err))
         }
     }
 }

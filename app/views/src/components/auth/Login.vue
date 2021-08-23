@@ -99,7 +99,7 @@ export default {
             document.getElementById('JobSearchModalLogin').classList.add('fade-in') 
         },
         login: function (){
-            let email = this.email
+            let email = this.username
             let password = this.password
             this.$store.dispatch('login', { email, password }).then(() => {
                 console.log('closing modal')

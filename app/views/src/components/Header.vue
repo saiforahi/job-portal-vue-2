@@ -96,8 +96,8 @@
                     <aside class="col-md-4">
                         <div class="careerfy-right">
                             <ul class="careerfy-user-section">
-                                <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signin-tab" v-on:click="showRegistrationForm" href="#">{{ $t('message.registration') }}</a></li>
-                                <li v-if="isLoggedIn == ''"><a class="careerfy-color careerfy-open-signup-tab" href="#" v-on:click="showLoginForm">{{ $t('message.signin') }}</a></li>
+                                <li v-if="!isLoggedIn"><a class="careerfy-color careerfy-open-signin-tab" v-on:click="showRegistrationForm" href="#">{{ $t('message.registration') }}</a></li>
+                                <li v-if="!isLoggedIn"><a class="careerfy-color careerfy-open-signup-tab" href="#" v-on:click="showLoginForm">{{ $t('message.signin') }}</a></li>
                                 <li v-if="isLoggedIn"><router-link to="/profile"><img :src="avatar_img" alt="Avatar" class="avatar"></router-link></li>
                             </ul>
                             <a href="#" class="careerfy-simple-btn careerfy-bgcolor"><span> <i class="careerfy-icon careerfy-arrows-2"></i>{{$t('message.post_job')}}</span></a>
@@ -143,6 +143,9 @@ export default {
                 this.$i18n.locale = 'en'
             }
         }
+    },
+    mounted(){
+        console.log(this.isLoggedIn)
     }
 }
 </script>
