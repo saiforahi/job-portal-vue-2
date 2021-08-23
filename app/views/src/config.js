@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const status = 'dev'
+const status = 'prod'
 export const API_URL = status === 'prod' ? 'https://karmashansthan.maroonlabbd.com/api/' : 'http://localhost:8000/api/'
 export const TOKEN = "token"
 export const BASE_URL = status ==='prod'? 'https://karmashansthan.maroonlabbd.com/':'http://localhost:8000'
