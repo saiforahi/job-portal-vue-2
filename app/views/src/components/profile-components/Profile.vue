@@ -6,39 +6,24 @@
                     <div class="careerfy-profile-title"><h2>Basic Information</h2></div>
                     <ul class="careerfy-row careerfy-employer-profile-form">
                         <li class="careerfy-column-6">
-                            <label>Your Name *</label>
-                            <input value="Jody Wisternoff" onblur="if(this.value == '') { this.value ='Jody Wisternoff'; }" onfocus="if(this.value =='Jody Wisternoff') { this.value = ''; }" type="text">
+                            <label>Your First Name *</label>
+                            <input v-model="first_name" type="text">
+                        </li>
+                        <li class="careerfy-column-6">
+                            <label>Your Last Name</label>
+                            <input v-model="last_name" type="text">
                         </li>
                         <li class="careerfy-column-6">
                             <label>Email *</label>
-                            <input value="contact@jodywisternoff" onblur="if(this.value == '') { this.value ='contact@jodywisternoff'; }" onfocus="if(this.value =='contact@jodywisternoff') { this.value = ''; }" type="text">
+                            <input v-model="email" type="email">
                         </li>
                         <li class="careerfy-column-6">
                             <label>Date of Birth:</label>
-                            <div class="careerfy-three-column-row">
-                                <div class="careerfy-profile-select careerfy-three-column">
-                                    <select>
-                                        <option>dd</option>
-                                        <option>dd</option>
-                                    </select>
-                                </div>
-                                <div class="careerfy-profile-select careerfy-three-column">
-                                    <select>
-                                        <option>mm</option>
-                                        <option>mm</option>
-                                    </select>
-                                </div>
-                                <div class="careerfy-profile-select careerfy-three-column">
-                                    <select>
-                                        <option>yyyy</option>
-                                        <option>yyyy</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <input class="form-control" v-model="dob" type="date">
                         </li>
                         <li class="careerfy-column-6">
                             <label>Phone *</label>
-                            <input value="0979380947" onblur="if(this.value == '') { this.value ='0979380947'; }" onfocus="if(this.value =='0979380947') { this.value = ''; }" type="text">
+                            <input v-model="phone" type="text">
                         </li>
                         <li class="careerfy-column-6">
                             <label>Category *</label>
@@ -55,7 +40,7 @@
                         </li>
                         <li class="careerfy-column-12">
                             <label>Description *</label>
-                            <textarea>Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt. Donec pretium gravida erat, a faucibus velit egestas eget. Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam itae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt. Donec pretium gravida erat, a faucibus velit egestas eget.</textarea>
+                            <textarea v-model="description"></textarea>
                         </li>
                     </ul>
                 </div>
@@ -65,9 +50,9 @@
                         <li class="careerfy-column-6">
                             <label>Country *</label>
                             <div class="careerfy-profile-select">
-                                <select>
-                                    <option>United Kingdom</option>
-                                    <option>United Kingdom</option>
+                                <select v-model="country">
+                                    <option value="bd">Bangladesh</option>
+                                    <option value="uk">United Kingdom</option>
                                 </select>
                             </div>
                         </li>
@@ -184,8 +169,29 @@ export default {
     name:"ProfileData",
     data(){
         return{
-
+            details:{},
+            first_name:'',
+            last_name:'',
+            email:'',
+            dob:'',
+            phone:'',
+            category:'',
+            job_title:'',
+            description:'',
+            country:'uk'
         }
-    }
+    },
+    mounted() {
+        this.$store.dispatch('get_details').then((user) => {
+            console.log('profile details',JSON.parse(JSON.stringify(user)))
+            this.details=user
+            this.first_name=user.first_name
+            this.last_name=user.last_name
+            this.email=user.email
+            this.dob=user.details.dob
+            this.phone=user.phone
+            this.description=user.details.description?user.details.description:''
+        }).catch(err => console.log(err))
+    },
 }
 </script>

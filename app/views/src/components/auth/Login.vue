@@ -46,6 +46,7 @@
                             </li>
                             <li>
                                 <input type="button" value="Sign In" v-on:click="login"/>
+                                <b-spinner style="width: 3rem; height: 3rem;" label="Large Spinner" type="grow"></b-spinner>
                             </li>
                         </ul>
                         <div class="clearfix"></div>
@@ -87,6 +88,9 @@ export default {
         // isLoggedIn:function(){
         //     //return this.$store
         // }
+        login_status:function(){
+            return this.$store.getters.authStatus
+        }
     },
     methods:{
         closeModal : function(){

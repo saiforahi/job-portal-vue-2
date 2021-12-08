@@ -136,8 +136,7 @@
         <!-- Main Content -->
 </template>
 <script>
-import L from 'leaflet';
-// import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+
 
 export default {
     name:"Contact",

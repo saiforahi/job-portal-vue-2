@@ -13,6 +13,7 @@ import JobAlerts from '../components/profile-components/JobAlerts.vue'
 import ChangePassword from '../components/profile-components/ChangePassword.vue'
 import JobsGrid from '../pages/JobsGrid.vue'
 import JobDetails from '../components/jobs/JobDetails.vue'
+import CreateJob from '../components/jobs/CreateJob'
 Vue.use(Router)
 
 let router = new Router({
@@ -78,6 +79,15 @@ let router = new Router({
         // },
       },
       {
+        path: '/job/create',
+        name: 'CreateJob',
+        component: CreateJob,
+        // props: {
+        //   header: true,
+        //   content: true
+        // },
+      },
+      {
         path: '/login',
         name: 'login',
         component: Login,
@@ -86,6 +96,7 @@ let router = new Router({
         //   content: true
         // },
       },
+      
       {
         path: '/',
         name: 'home',

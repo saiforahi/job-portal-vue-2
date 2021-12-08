@@ -5,13 +5,12 @@ import Axios from 'axios'
 import VueRouter from 'vue-router'
 import router from './route/routes'
 import i18n from './locals/Translations'
-import 'leaflet/dist/leaflet.css'
+// import 'leaflet/dist/leaflet.css'
 
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
-
-Vue.component('l-map', LMap);
-Vue.component('l-tile-layer', LTileLayer);
-Vue.component('l-marker', LMarker);
+// import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+import $ from 'jquery'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/js/bootstrap.min.js'
 
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem('token')
@@ -20,6 +19,7 @@ if (token) {
 }
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use($)
 new Vue({
   render: h => h(App),router,store:store,i18n
 }).$mount('#app')

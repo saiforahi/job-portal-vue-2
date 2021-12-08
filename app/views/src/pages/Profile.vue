@@ -20,8 +20,8 @@
                                                 <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
                                                 <input type="file" class="careerfy-upload" />
                                             </div>
-                                            <h2>Nora Tsunoda</h2>
-                                            <span class="careerfy-dashboard-subtitle">UI/UX Designer</span>
+                                            <h2>{{first_name}}</h2>
+                                            <span class="careerfy-dashboard-subtitle">{{job_title}}</span>
                                         </figcaption>
                                     </figure>
                                     <ul>
@@ -234,6 +234,14 @@ export default {
     data(){
         return{
             
+        }
+    },
+    computed:{
+        first_name(){
+            return this.$store.getters.details.first_name
+        },
+        job_title(){
+            return this.$store.getters.details.job_title?this.$store.getters.details.job_title:''
         }
     },
     methods:{
