@@ -33,6 +33,7 @@
                             </li>
                         </ul>
                     </div> -->
+        <p v-if="showSnackbar" style="color:red;">Wrong Credentials!</p>
           <div class="careerfy-user-form">
             <ul>
               <li>
@@ -41,6 +42,7 @@
                   v-model="username"
                   type="text"
                   value="Enter Your Email Address"
+                  autocomplete="username"
                 />
                 <i class="careerfy-icon careerfy-mail"></i>
               </li>
@@ -57,11 +59,11 @@
               </li>
               <li>
                 <input type="button" value="Sign In" v-on:click="login" />
-                <b-spinner
+                <!-- <b-spinner
                   style="width: 3rem; height: 3rem"
                   label="Large Spinner"
                   type="grow"
-                ></b-spinner>
+                ></b-spinner> -->
               </li>
             </ul>
             <div class="clearfix"></div>
@@ -96,9 +98,9 @@
         :md-active.sync="showSnackbar"
         md-persistent
       >
-        <span>Connection timeout. Showing limited messages!</span>
+        <span>Wrong Credentials!</span>
         <md-button class="md-primary" @click="showSnackbar = false"
-          >Retry</md-button
+          >OK</md-button
         >
       </md-snackbar>
     </div>
@@ -110,9 +112,9 @@ export default {
   name: "Login",
   data() {
     return {
-        showSnackbar:true,
-        username: "",
-        password: "",
+      showSnackbar: false,
+      username: "",
+      password: "",
     };
   },
   computed: {
@@ -124,6 +126,10 @@ export default {
     },
   },
   methods: {
+      resetForm: function(){
+          this.username=""
+          this.password=""
+      },
     closeModal: function () {
       document
         .getElementById("JobSearchModalSignup")
@@ -145,9 +151,13 @@ export default {
         .then(() => {
           console.log("closing modal");
           this.closeModal();
+          this.resetForm()
           swal("Success", "You successfully logged in!", "success");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err.status);
+          this.showSnackbar = true;
+        });
     },
     onEnter: function () {
       this.login();

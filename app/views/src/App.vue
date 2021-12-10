@@ -9,7 +9,12 @@
     <Login/>
   </div>
 </template>
-
+<style>
+a{
+  color: black !important;
+  text-decoration: none !important;
+}
+</style>
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'

@@ -14,11 +14,12 @@
                             <div class="careerfy-typo-wrap">
                                 <div class="careerfy-employer-dashboard-nav">
                                     <figure>
-                                        <a href="#" class="employer-dashboard-thumb"><img src="extra-images/candidate-dashboard-navthumb.jpg" alt=""></a>
+                                        <a href="#" class="employer-dashboard-thumb"><img style="height: 100% !important;" :src="profile_pic_store==''?'extra-images/candidate-dashboard-navthumb.jpg':profile_pic_store" alt=""></a>
                                         <figcaption>
                                             <div class="careerfy-fileUpload">
                                                 <span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
-                                                <input type="file" class="careerfy-upload" />
+                                                <input type="file" class="careerfy-upload" @change="update_profile_pic($event.target.files)"/>
+                                                <!-- <input type="file" :name="uploadFieldName" :disabled="isSaving" @change="update_profile_pic($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept="image/*"> -->
                                             </div>
                                             <h2>{{first_name}}</h2>
                                             <span class="careerfy-dashboard-subtitle">{{job_title}}</span>
@@ -228,12 +229,13 @@
 </template>
 <script>
 import SubHeader from '../components/profile-components/SubHeader.vue'
+import {API, FILE_API} from '../config'
 export default {
   components: { SubHeader },
     name:"Profile",
     data(){
         return{
-            
+            profile_pic:''
         }
     },
     computed:{
@@ -242,15 +244,36 @@ export default {
         },
         job_title(){
             return this.$store.getters.details.job_title?this.$store.getters.details.job_title:''
+        },
+        profile_pic_store(){
+            console.log('ffr',this.$store.getters.profile_pic)
+            this.profile_pic=this.$store.getters.profile_pic
+            return this.$store.getters.profile_pic
         }
+    },
+    mounted(){
+        // console.log('pro pic',this.$store.getters.details.profile_pic)
     },
     methods:{
         logout:function(){
+            this.$router.push('/')
             this.$store.dispatch('logout').then((res)=>{
-                if(res.success==true){
-                    this.$router.push('/')
+                
+            }).catch(err => {
+                console.log(err);
+                
                 }
-            }).catch(err => console.log(err))
+            )
+        },
+        update_profile_pic:function(file){
+            console.log(file)
+            this.profile_pic=URL.createObjectURL(file[0])
+            this.$store.commit('update_profile_pic',URL.createObjectURL(file[0]))
+            let formData=new FormData()
+            formData.append('image',file[0])
+            FILE_API.post('user/update-profile-pic',formData).then(res=>{
+                console.log(res)
+            })
         }
     }
 }

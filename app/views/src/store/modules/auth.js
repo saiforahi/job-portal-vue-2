@@ -25,24 +25,38 @@ const actions = {
                 resolve(resp)
             }).catch((err)=>{
                 commit('auth_error')
+                console.log(err)
                 localStorage.removeItem(TOKEN)
                 reject(err)
             })
         })
     },
-
+    update_basic ({ commit}, data) {
+        return new Promise((resolve, reject) => {
+            console.log('basic data',JSON.stringify(data))
+            API.put('update-basic',data).then((resp)=>{
+                console.log('res',resp.data)
+                //resolve()
+                resolve(resp)
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
+    },
     logout ({commit}) {
         return new Promise((resolve, reject) => {
             console.log(localStorage.getItem(TOKEN))
             API.post('logout').then((res)=>{
-            commit('logout')
-            localStorage.removeItem(TOKEN)
-            resolve(res.data)
-        }).catch((err)=>{
-            reject(err)
+                commit('logout')
+                localStorage.clear()
+                resolve(res.data)
+            }).catch((err)=>{
+                commit('logout')
+                localStorage.clear()
+                resolve(err)
+            })
         })
-    })
-  }
+    }
 }
 
 // mutations
@@ -62,6 +76,7 @@ const mutations= {
         state.status = ''
         state.token = ''
     },
+    
 }
 
 export default {

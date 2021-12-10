@@ -10,8 +10,12 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
-Vue.use(VueMaterial)
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
+// import 'vue-material/dist/theme/default-dark.css'
 
+Vue.use(VueMaterial)
+Vue.component('v-select', vSelect)
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem('token')
 if (token) {
