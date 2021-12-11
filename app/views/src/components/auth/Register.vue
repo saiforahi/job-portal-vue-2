@@ -10,7 +10,8 @@
                     <h2>Signup to your account</h2>
                     <span v-on:click="closeModal" class="modal-close"><i class="fa fa-times"></i></span>
                 </div>
-                <form>
+                <hr/>
+                <form style="margin-top:70px;">
                     <!-- <div class="careerfy-box-title">
                         <span>Choose your Account Type</span>
                     </div>
@@ -36,32 +37,42 @@
                         <ul>
                             <li>
                                 <label>First Name:</label>
-                                <input v-model="firstName" value="Enter Your Name" onblur="if(this.value == '') { this.value ='Enter Your Name'; }" onfocus="if(this.value =='Enter Your Name') { this.value = ''; }" type="text">
+                                <input  v-model="first_name" value="Enter Your Name" onblur="if(this.value == '') { this.value ='Enter Your Name'; }" onfocus="if(this.value =='Enter Your Name') { this.value = ''; }" type="text">
                                 <i class="careerfy-icon careerfy-user"></i>
                             </li>
                             <li>
                                 <label>Last Name:</label>
-                                <input v-model="lastName" value="Enter Your Name" onblur="if(this.value == '') { this.value ='Enter Your Name'; }" onfocus="if(this.value =='Enter Your Name') { this.value = ''; }" type="text">
+                                <input v-model="last_name" value="Enter Your Name" onblur="if(this.value == '') { this.value ='Enter Your Name'; }" onfocus="if(this.value =='Enter Your Name') { this.value = ''; }" type="text">
                                 <i class="careerfy-icon careerfy-user"></i>
                             </li>
                             <li>
-                                <label>Email Address:</label>
-                                <input v-model="email" value="Enter Your Email Address" onblur="if(this.value == '') { this.value ='Enter Your Email Address'; }" onfocus="if(this.value =='Enter Your Email Address') { this.value = ''; }" type="text">
-                                <i class="careerfy-icon careerfy-mail"></i>
+                                <div class="row">
+                                    <label>Email Address:</label>
+                                    <input v-model="email"  type="text">
+                                    
+                                </div>
+                                <div class="row">
+                                    <p v-if="errors.email" style="color:red;">{{errors.email[0]}}</p>
+                                </div>
+                                
                             </li>
+                            
                             <li>
                                 <label>Phone Number:</label>
-                                <input v-model="phone" value="Enter Your Phone Number" onblur="if(this.value == '') { this.value ='Enter Your Phone Number'; }" onfocus="if(this.value =='Enter Your Phone Number') { this.value = ''; }" type="text">
-                                <i class="careerfy-icon careerfy-technology"></i>
+                                <input v-model="phone"  type="text">
+                                
+                                <p v-if="errors.phone" style="color:red;">{{errors.phone[0]}}</p>
                             </li>
-                            <li class="careerfy-user-form-coltwo-full">
-                                <label>Categories:</label>
-                                <div class="careerfy-profile-select">
-                                    <select>
-                                        <option>Employee</option>
-                                        <option>Employer</option>
-                                    </select>
-                                </div>
+                            
+                            <li>
+                                <label>Password</label>
+                                <input style="width:100%;" v-model="password" placeholder="Enter Your 8 digit password"  type="password">
+                                
+                            </li>
+                            <li>
+                                <label>Confirm Password</label>
+                                <input style="width:100%;" v-model="confirm_password" placeholder="Confirm password" type="password">
+                                
                             </li>
                             <!-- <li class="careerfy-user-form-coltwo-full">
                                 <img src="extra-images/login-robot.png" alt="">
@@ -95,10 +106,13 @@ export default {
     name:"Register",
     data(){
         return{
-            firstName :"",
-            lastName : "",
+            first_name :"",
+            last_name : "",
             email: "",
-            phone : ""
+            phone : "",
+            password:"",
+            confirm_password:"",
+            errors:{}
         }
     },
     methods:{
@@ -109,13 +123,15 @@ export default {
         register: function(){
             let email = this.email
             let phone = this.phone
-            let firstName = this.firstName
-            let lastName = this.lastName
-            this.$store.dispatch('register', { firstName,lastName,email, phone }).then(() => {
+            let first_name = this.first_name
+            let last_name = this.last_name
+            let password = this.password
+            let confirm_password = this.confirm_password
+            this.$store.dispatch('register', { first_name,last_name,email, phone, password, confirm_password }).then(() => {
                 this.closeModal()
                 swal('Success','You successfully registered and logged in!','success')
                 this.$router.push('/')
-            }).catch(err => console.log(err))
+            }).catch(err => this.errors=err)
         }
     },
 }

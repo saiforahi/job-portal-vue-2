@@ -58,6 +58,19 @@ const actions = {
                 resolve(err)
             })
         })
+    },
+    register ({commit},data){
+        return new Promise((resolve, reject) => {
+            console.log(JSON.stringify(data))
+            PUBLIC_API.post('register',data).then((resp)=>{
+                console.log('register res',resp.data)
+                //resolve()
+                resolve(resp)
+            }).catch((err)=>{
+                console.log('reg err',err.response)
+                reject(err.response.data.errors)
+            })
+        })
     }
 }
 
