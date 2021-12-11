@@ -10,10 +10,10 @@
   </div>
 </template>
 <style>
-a{
+/* a{
   color: black !important;
   text-decoration: none !important;
-}
+} */
 </style>
 <script>
 import Header from './components/Header.vue'

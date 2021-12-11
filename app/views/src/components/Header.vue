@@ -114,7 +114,7 @@ export default {
     name:"Header",
     data(){
         return{
-            avatar_img:avatar
+            
         }
     },
     computed : {
@@ -122,7 +122,8 @@ export default {
         currentLang : function(){ return this.$i18n.locale},
         currentRouteName() {
             return this.$route.name;
-        }
+        },
+        avatar_img: function(){return this.$store.getters.profile_pic}
     },
     methods:{
         showLoginForm:function(){
@@ -146,6 +147,7 @@ export default {
     },
     mounted(){
         console.log(this.isLoggedIn)
+        this.$store.dispatch('get_details')
     }
 }
 </script>

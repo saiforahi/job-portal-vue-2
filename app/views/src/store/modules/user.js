@@ -21,11 +21,11 @@ const actions = {
             
             API.get('user/details').then((resp)=>{
                 console.log('details',resp.data)
-                commit('auth_success', resp.data.data)
+                commit('details_fetch_success', resp.data.data)
                 //resolve()
                 resolve(resp.data.data)
             }).catch((err)=>{
-                commit('auth_error')
+                commit('details_fetch_error')
                 reject(err)
             })
         })
@@ -52,12 +52,12 @@ const mutations= {
     set_status_loading(state){
         state.status = 'loading'
     },
-    auth_success(state, details){
+    details_fetch_success(state, details){
         state.status = 'success'
         state.details = details
         state.profile_pic = details.media.length>0?details.media[0].original_url:''
     },
-    auth_error(state){
+    details_fetch_error(state){
         state.status = 'error'
     },
     update_profile_pic(state,new_pic){

@@ -19,14 +19,16 @@ const actions = {
             commit('auth_request')
             console.log(JSON.stringify(user))
             PUBLIC_API.post('login',user).then((resp)=>{
+                console.log('login res',resp.data)
                 localStorage.setItem(TOKEN, resp.data.token)
-                commit('auth_success', resp.data.token, resp.data.user)
+                commit('auth_success', resp.data.token)
                 //resolve()
                 resolve(resp)
             }).catch((err)=>{
                 commit('auth_error')
                 console.log(err)
-                localStorage.removeItem(TOKEN)
+                localStorage.clear()
+                sessionStorage.clear()
                 reject(err)
             })
         })
@@ -64,10 +66,10 @@ const mutations= {
     auth_request(state){
         state.status = 'loading'
     },
-    auth_success(state, token, user){
+    auth_success(state, token){
         state.status = 'success'
         state.token = token
-        state.user = user
+        // state.user = user
     },
     auth_error(state){
         state.status = 'error'

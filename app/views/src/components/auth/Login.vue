@@ -10,8 +10,8 @@
             ><i class="fa fa-times"></i
           ></span>
         </div>
-        <form>
-          <hr />
+        <hr />
+        <form style="margin-top:50px;">
           <!-- <div class="careerfy-box-title">
                         <span>Choose your Account Type</span>
                     </div>

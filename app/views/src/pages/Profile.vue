@@ -228,6 +228,7 @@
     </div>
 </template>
 <script>
+import swal from 'sweetalert'
 import SubHeader from '../components/profile-components/SubHeader.vue'
 import {API, FILE_API} from '../config'
 export default {
@@ -267,12 +268,14 @@ export default {
         },
         update_profile_pic:function(file){
             console.log(file)
-            this.profile_pic=URL.createObjectURL(file[0])
-            this.$store.commit('update_profile_pic',URL.createObjectURL(file[0]))
+            
             let formData=new FormData()
             formData.append('image',file[0])
             FILE_API.post('user/update-profile-pic',formData).then(res=>{
                 console.log(res)
+                this.profile_pic=URL.createObjectURL(file[0])
+                this.$store.commit('update_profile_pic',URL.createObjectURL(file[0]))
+                swal('Upadted','Your profile image has been updated','success')
             })
         }
     }
