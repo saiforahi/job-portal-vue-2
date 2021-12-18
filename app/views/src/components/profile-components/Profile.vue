@@ -1,5 +1,6 @@
 <template>
     <div class="careerfy-column-9">
+        
         <div class="careerfy-typo-wrap">
             <form class="careerfy-employer-dasboard">
                 <div class="careerfy-employer-box-section">
@@ -263,6 +264,7 @@
                         </li>
                     </ul>
                 </div>
+                <scale-loader :loading="is_loading" :color="'#13b5ea'"></scale-loader>
                 <input type="button" v-on:click="update_details()" class="careerfy-employer-profile-submit" value="Save Setting">
             </form>
         </div>
@@ -273,10 +275,15 @@
 import moment from 'moment'
 import swal from 'sweetalert'
 import {API} from '../../config'
+import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 export default {
     name:"ProfileData",
+    components:{
+        ScaleLoader,
+    },
     data(){
         return{
+            is_loading:false,
             //select options
             religions:[],
             ethnicities:[],
@@ -374,6 +381,7 @@ export default {
             return moment(value).format('YYYY-MM-DD')
         },
         update_details:function(){
+            this.is_loading=true
             let data={
                 first_name:this.first_name,
                 last_name:this.last_name,
@@ -402,13 +410,17 @@ export default {
             console.log('update_payload',data,JSON.stringify(data))
             this.$store.dispatch('update_details',data).then((res)=>{
                 console.log(res)
+                this.is_loading=false
                 if(res.success == true){
                     swal('Success','Your profile updated!','success')
                 }
+            }).catch(err=>{
+                this.is_loading=false
             })
         }
     },
     mounted() {
+        this.is_loading=true
         API.get('user/preset-data').then(res=>{
             console.log('pre set',res.data.data)
             this.marital_statuses=res.data.data.marital_statuses
@@ -440,7 +452,8 @@ export default {
             this.age = user.details?.age?user.details.age:''
             this.present_address = user.details?.present_address,
             this.permanent_address = user.details?.permanent_address
-        }).catch(err => console.log(err))
+            this.is_loading=false
+        }).catch(err => {console.log(err); this.is_loading=false;})
     },
 }
 </script>

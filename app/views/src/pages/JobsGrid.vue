@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="careerfy-page-title">
-                            <h1>Jobs For Good Programmers</h1>
+                            <h1>Jobs</h1>
                             <p>Yes! You make or may not find the right job for you, but that’s ok.</p>
                         </div>
                     </div>
@@ -57,7 +57,9 @@
             <!-- Main Section -->
 
             <!-- Main Section -->
-            <div class="careerfy-main-section">
+            <scale-loader :loading="is_loading" :color="'#13b5ea'" ></scale-loader>
+            <div class="careerfy-main-section" v-if="!is_loading">
+                
                 <div class="container">
                     <div class="row">
                         <!-- <aside class="careerfy-column-3 careerfy-typo-wrap">
@@ -223,7 +225,7 @@
                             <!-- JobGrid -->
                             <div v-if="gridView" class="careerfy-job careerfy-job-grid">
                                 <ul class="careerfy-row">
-                                    <li class="careerfy-column-4">
+                                    <li v-for="job in jobs" :key="job.id" class="careerfy-column-4">
                                         <div class="careerfy-job-grid-wrap">
                                             <figure v-on:click="go_to_details">
                                                 <span class="careerfy-jobtype-label">Freelance</span>
@@ -232,7 +234,7 @@
                                             </figure>
                                             <div class="careerfy-jobgrid-text">
                                                 <div class="careerfy-job-tag"><a href="#">@ Massimo Artemisis</a></div>
-                                                <h2><a href="javascript:void(0)">PHP Web Software Developer (HTML, CSS)</a></h2>
+                                                <h2><a href="javascript:void(0)">{{job.title}}</a></h2>
                                                 <ul class="careerfy-job-time">
                                                     <li><a href="#">Sales & Marketing</a></li>
                                                     <li>3 days ago</li>
@@ -247,12 +249,12 @@
                             <!-- JobList -->
                             <div v-else class="careerfy-job careerfy-joblisting-classic">
                                 <ul class="careerfy-row">
-                                    <li class="careerfy-column-12">
+                                    <li v-for="job in jobs" :key="job.id" class="careerfy-column-12">
                                         <div class="careerfy-joblisting-classic-wrap">
                                             <figure><a href="#"><img src="extra-images/job-listing-logo-1.png" alt=""></a></figure>
                                             <div class="careerfy-joblisting-text">
                                                 <div class="careerfy-list-option">
-                                                    <h2><a href="#">Need Senior Rolling Stock Technician</a> <span>Featured</span></h2>
+                                                    <h2><a href="#">{{job.title}}</a> <span>Featured</span></h2>
                                                     <ul>
                                                         <li><a href="#">@ Massimo Artemisis</a></li>
                                                         <li><i class="careerfy-icon careerfy-maps-and-flags"></i> Netherlands, Rotterdam</li>
@@ -289,22 +291,38 @@
 
         </div>
         <!-- Main Content -->
+        
     </div>
 </template>
 
 <script>
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 export default {
+    
     name:"JobsGrid",
+    components:{
+        PulseLoader,ScaleLoader
+    },
     data(){
         return{
             gridView: true,
-            jobs:[]
+            jobs:[],
+            is_loading:false
         }
     },
     methods:{
         go_to_details:function(){
             this.$router.push({name:'jobdetails',params:{id:'1'}})
         }
+    },
+    mounted(){
+        this.is_loading=true
+        this.$store.dispatch('get_all_jobs').then((res)=>{
+            console.log('jobs',res)
+            this.jobs=res.data
+            this.is_loading=false
+        })
     }
 }
 </script>

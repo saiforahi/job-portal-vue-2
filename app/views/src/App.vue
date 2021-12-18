@@ -14,6 +14,9 @@
   color: black !important;
   text-decoration: none !important;
 } */
+.v-spinner{
+    text-align: center !important;
+}
 </style>
 <script>
 import Header from './components/Header.vue'

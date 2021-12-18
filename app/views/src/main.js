@@ -24,6 +24,7 @@ if (token) {
 }
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.component('pulse-loader', require('vue-spinner/src/PulseLoader.vue'));
 new Vue({
   render: h => h(App),router,store:store,i18n
 }).$mount('#app')

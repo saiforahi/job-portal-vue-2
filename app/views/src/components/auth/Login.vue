@@ -11,6 +11,7 @@
           ></span>
         </div>
         <hr />
+        <scale-loader :loading="form_submitted" :color="'#13b5ea'"></scale-loader>
         <form style="margin-top:50px;">
           <!-- <div class="careerfy-box-title">
                         <span>Choose your Account Type</span>
@@ -104,17 +105,24 @@
         >
       </md-snackbar>
     </div>
+    
   </div>
+  
 </template>
 <script>
 import swal from "sweetalert";
+import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 export default {
   name: "Login",
+  components:{
+    ScaleLoader
+  },
   data() {
     return {
       showSnackbar: false,
       username: "",
       password: "",
+      form_submitted:false
     };
   },
   computed: {
@@ -144,17 +152,22 @@ export default {
       document.getElementById("JobSearchModalLogin").classList.add("fade-in");
     },
     login: function () {
+      this.form_submitted=true
       let email = this.username;
       let password = this.password;
       this.$store
         .dispatch("login", { email, password })
         .then(() => {
-          console.log("closing modal");
-          this.closeModal();
-          this.resetForm()
-          swal("Success", "You successfully logged in!", "success");
+          this.$store.dispatch('get_details').then((res)=>{
+            console.log("closing modal");
+            this.closeModal();
+            this.resetForm()
+            this.form_submitted=false
+            swal("Success", "You successfully logged in!", "success");
+          })
         })
         .catch((err) => {
+          this.form_submitted=false
           console.log(err.status);
           this.showSnackbar = true;
         });
