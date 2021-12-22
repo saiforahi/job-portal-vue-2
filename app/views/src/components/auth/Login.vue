@@ -163,7 +163,9 @@ export default {
             this.closeModal();
             this.resetForm()
             this.form_submitted=false
-            swal("Success", "You successfully logged in!", "success");
+            swal("Success", "You successfully logged in!", "success").then(()=>{
+              this.$router.push({path:'profile'})
+            });
           })
         })
         .catch((err) => {

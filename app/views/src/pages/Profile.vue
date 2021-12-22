@@ -27,7 +27,7 @@
                                     </figure>
                                     <ul>
                                         <li><router-link to="/profile"><i class="careerfy-icon careerfy-user"></i> My Profile</router-link></li>
-                                        <li><router-link to="/profile/resume"><i class="careerfy-icon careerfy-resume"></i> My Resume</router-link></li>
+                                        <li><router-link :disabled="true" to="/profile/resume"><i class="careerfy-icon careerfy-resume"></i> My Resume</router-link></li>
                                         <li><router-link to="/profile/saved-jobs"><i class="careerfy-icon careerfy-heart"></i> Saved jobs</router-link></li>
                                         <li><router-link to="/profile/applied-jobs"><i class="careerfy-icon careerfy-briefcase-1"></i> Applied jobs</router-link></li>
                                         <li><router-link to="/profile/job-alerts"><i class="careerfy-icon careerfy-alarm"></i> Job Alerts</router-link></li>

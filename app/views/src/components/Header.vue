@@ -12,7 +12,7 @@
                     <aside style="float:right" class="col-sm-2"><label style="cursor:pointer;" v-on:click="change_lang" class="text-right lang-label">{{currentLang}}</label></aside>
                 </div>
                 <div class="row">
-                    <aside class="col-md-2"> <router-link to="/"><a href="#" class="careerfy-logo"><img src="images/karma-logo.png" alt=""></a></router-link> </aside>
+                    <aside class="col-md-2"> <router-link to="/"><a href="#" class="careerfy-logo"><img src="images/karma-logo.jpg" alt=""></a></router-link> </aside>
                     <aside class="col-md-6">
                         <nav class="careerfy-navigation">
                             <div class="navbar-header">

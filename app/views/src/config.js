@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const status = 'prod'
+const status = 'dev'
 export const API_URL = status === 'prod' ? 'https://karma.tidyfish.co/api/' : 'http://localhost:8000/api/'
 export const TOKEN = "token"
 export const BASE_URL = status ==='prod'? 'https://karma.tidyfish.co':'http://localhost:8000'

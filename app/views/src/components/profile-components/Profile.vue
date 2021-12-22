@@ -81,125 +81,133 @@
                         </li> -->
                     </ul>
                 </div>
-                <div class="careerfy-employer-box-section">
-                    <div class="careerfy-profile-title"><h2>PresentAddress / Location</h2></div>
-                    <ul class="careerfy-row careerfy-employer-profile-form">
-                        <!-- <li class="careerfy-column-6">
-                            <label>Country *</label>
-                            <div class="careerfy-profile-select">
-                                <select v-model="country">
-                                    <option value="bd">Bangladesh</option>
-                                    <option value="uk">United Kingdom</option>
-                                </select>
-                            </div>
-                        </li> -->
-                        <li class="careerfy-column-6">
-                            <label>District *</label>
-                            <div class="careerfy-profile-select">
-                                <select v-model="present_address.district">
-                                    <option  value="-1">select</option>
-                                    <option v-for="district in districts" :key="district.id" :value="district.id">{{district.title.en}}</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>Thana *</label>
-                            <div class="careerfy-profile-select">
-                                <select v-model="present_address.thana">
-                                    <option v-for="thana in present_thanas" :key="thana.id" :value="thana.id">{{thana.title.en}}</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>Union *</label>
-                            <input type="text" v-model="present_address.union">
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>Village</label>
-                            <input type="text" v-model="present_address.village_para">
-                        </li>
-                        <li class="careerfy-column-12">
-                            <label>Street / House no</label>
-                            <input type="text" v-model="present_address.road_house_name">
-                        </li>
-                        <li class="careerfy-column-12">
-                            <label>Postal Code</label>
-                            <input type="text" v-model="present_address.postal_code">
-                        </li>
-                        <!-- <li class="careerfy-column-12">
-                            <div class="careerfy-profile-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22589232.038285658!2d-103.9763543971716!3d46.28054447273778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1507595834401"></iframe></div>
-                            <span class="careerfy-short-message">For the precise location, you can drag and drop the pin.</span>
-                        </li> -->
-                    </ul>
-                </div>
-                <div class="careerfy-employer-box-section">
-                    <div class="careerfy-profile-title"><h2>Permanent Address / Location</h2></div>
-                    <div class="row">
-                        <div class="col">
-                            <label>
-                                <span><input type="checkbox" v-model="same_address" :checked="same_address"></span>   <span>Same as present address</span>
-                            </label>
+                
+                <div class="row">
+                    <div class="col-md-6 box-left">
+                        <div class="careerfy-employer-box-section">
+                            <div class="careerfy-profile-title"><h2>Present Address</h2></div>
+                            <ul class="careerfy-row careerfy-employer-profile-form">
+                                <!-- <li class="careerfy-column-6">
+                                    <label>Country *</label>
+                                    <div class="careerfy-profile-select">
+                                        <select v-model="country">
+                                            <option value="bd">Bangladesh</option>
+                                            <option value="uk">United Kingdom</option>
+                                        </select>
+                                    </div>
+                                </li> -->
+                                <li class="careerfy-column-6">
+                                    <label>District *</label>
+                                    <div class="careerfy-profile-select">
+                                        <select v-model="present_address.district">
+                                            <option  value="-1">select</option>
+                                            <option v-for="district in districts" :key="district.id" :value="district.id">{{district.title.en}}</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>Thana *</label>
+                                    <div class="careerfy-profile-select">
+                                        <select v-model="present_address.thana">
+                                            <option v-for="thana in present_thanas" :key="thana.id" :value="thana.id">{{thana.title.en}}</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>Union *</label>
+                                    <input type="text" v-model="present_address.union">
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>Village</label>
+                                    <input type="text" v-model="present_address.village_para">
+                                </li>
+                                <li class="careerfy-column-12">
+                                    <label>Street / House no</label>
+                                    <input type="text" v-model="present_address.road_house_name">
+                                </li>
+                                <li class="careerfy-column-12">
+                                    <label>Postal Code</label>
+                                    <input type="text" v-model="present_address.postal_code">
+                                </li>
+                                <!-- <li class="careerfy-column-12">
+                                    <div class="careerfy-profile-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22589232.038285658!2d-103.9763543971716!3d46.28054447273778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1507595834401"></iframe></div>
+                                    <span class="careerfy-short-message">For the precise location, you can drag and drop the pin.</span>
+                                </li> -->
+                            </ul>
                         </div>
                     </div>
-                    <ul v-if="!same_address" class="careerfy-row careerfy-employer-profile-form">
-                        <!-- <li class="careerfy-column-6">
-                            <label>Country *</label>
-                            <div class="careerfy-profile-select">
-                                <select v-model="country">
-                                    <option value="bd">Bangladesh</option>
-                                    <option value="uk">United Kingdom</option>
-                                </select>
+                    <div class="col-md-6 box-right">
+                        <div class="careerfy-employer-box-section">
+                            <div class="careerfy-profile-title"><h2>Permanent Address</h2></div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>
+                                        <span><input type="checkbox" v-model="same_address" :checked="same_address"></span>   <span>Same as present address</span>
+                                    </label>
+                                </div>
                             </div>
-                        </li> -->
-                        <li class="careerfy-column-12">
-                            
-                            <!-- <label> </label> -->
-                            <!-- <div class="careerfy-profile-select">
-                                <select>
-                                    <option>B.sc Master</option>
-                                    <option>B.sc Master</option>
-                                </select>
-                            </div> -->
-                            
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>District *</label>
-                            <div class="careerfy-profile-select">
-                                <select v-model="permanent_address.district">
-                                    <option v-for="district in districts" :key="district.id" :value="district.id">{{district.title.en}}</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>Thana *</label>
-                            <div class="careerfy-profile-select">
-                                <select v-model="permanent_address.thana">
-                                    <option v-for="thana in permanent_thanas" :key="thana.id" :value="thana.id">{{thana.title.en}}</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>Union *</label>
-                            <input type="text" v-model="permanent_address.union">
-                        </li>
-                        <li class="careerfy-column-6">
-                            <label>Village</label>
-                            <input  type="text" v-model="permanent_address.village_para">
-                        </li>
-                        <li class="careerfy-column-12">
-                            <label>Street / House no</label>
-                            <input  type="text" v-model="permanent_address.road_house_name">
-                        </li>
-                        <li class="careerfy-column-12">
-                            <label>Postal Code</label>
-                            <input  type="text" v-model="permanent_address.postal_code">
-                        </li>
-                        <!-- <li class="careerfy-column-12">
-                            <div class="careerfy-profile-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22589232.038285658!2d-103.9763543971716!3d46.28054447273778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1507595834401"></iframe></div>
-                            <span class="careerfy-short-message">For the precise location, you can drag and drop the pin.</span>
-                        </li> -->
-                    </ul>
+                            <ul v-if="!same_address" class="careerfy-row careerfy-employer-profile-form">
+                                <!-- <li class="careerfy-column-6">
+                                    <label>Country *</label>
+                                    <div class="careerfy-profile-select">
+                                        <select v-model="country">
+                                            <option value="bd">Bangladesh</option>
+                                            <option value="uk">United Kingdom</option>
+                                        </select>
+                                    </div>
+                                </li> -->
+                                <li class="careerfy-column-12">
+                                    
+                                    <!-- <label> </label> -->
+                                    <!-- <div class="careerfy-profile-select">
+                                        <select>
+                                            <option>B.sc Master</option>
+                                            <option>B.sc Master</option>
+                                        </select>
+                                    </div> -->
+                                    
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>District *</label>
+                                    <div class="careerfy-profile-select">
+                                        <select v-model="permanent_address.district">
+                                            <option v-for="district in districts" :key="district.id" :value="district.id">{{district.title.en}}</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>Thana *</label>
+                                    <div class="careerfy-profile-select">
+                                        <select v-model="permanent_address.thana">
+                                            <option v-for="thana in permanent_thanas" :key="thana.id" :value="thana.id">{{thana.title.en}}</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>Union *</label>
+                                    <input type="text" v-model="permanent_address.union">
+                                </li>
+                                <li class="careerfy-column-6">
+                                    <label>Village</label>
+                                    <input  type="text" v-model="permanent_address.village_para">
+                                </li>
+                                <li class="careerfy-column-12">
+                                    <label>Street / House no</label>
+                                    <input  type="text" v-model="permanent_address.road_house_name">
+                                </li>
+                                <li class="careerfy-column-12">
+                                    <label>Postal Code</label>
+                                    <input  type="text" v-model="permanent_address.postal_code">
+                                </li>
+                                <!-- <li class="careerfy-column-12">
+                                    <div class="careerfy-profile-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22589232.038285658!2d-103.9763543971716!3d46.28054447273778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1507595834401"></iframe></div>
+                                    <span class="careerfy-short-message">For the precise location, you can drag and drop the pin.</span>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="careerfy-employer-box-section">
                     <div class="careerfy-profile-title"><h2>Other Information</h2></div>
                     <ul class="careerfy-row careerfy-employer-profile-form">
@@ -264,13 +272,21 @@
                         </li>
                     </ul>
                 </div>
+                
                 <scale-loader :loading="is_loading" :color="'#13b5ea'"></scale-loader>
-                <input type="button" v-on:click="update_details()" class="careerfy-employer-profile-submit" value="Save Setting">
+                <input type="button" v-on:click="update_details()" class="careerfy-employer-profile-submit" value="Save">
             </form>
         </div>
     </div>
 </template>
-
+<style>
+.box-right {
+    padding: 0 5px 0 5px;
+}
+.box-left {
+    padding: 0 5px 0 0;
+}
+</style>
 <script>
 import moment from 'moment'
 import swal from 'sweetalert'
@@ -420,7 +436,7 @@ export default {
         }
     },
     mounted() {
-        this.is_loading=true
+        
         API.get('user/preset-data').then(res=>{
             console.log('pre set',res.data.data)
             this.marital_statuses=res.data.data.marital_statuses
